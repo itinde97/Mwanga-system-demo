@@ -76,7 +76,7 @@ def logout_view(request):
 
 @login_required(login_url='/account/login-customer')
 def edit_customer(request):
-    customer = CustomerSignUp.objects.get(user=request.user)
+    customer = CustomerSignUp.objects.filter(user=request.user).first()
     form = UpdateCustomerForm(instance=customer)
     if request.method == 'POST':
 
@@ -85,6 +85,7 @@ def edit_customer(request):
         if form.is_valid:
             customer = form.save(commit=False)
             customer.save()
+            customer = models.ForeignKey(customer, null=True, blank=True)
             return HttpResponseRedirect(reverse('home'))
     # return HttpResponseRedirect(reverse('home'))
     return render(request, 'loginApp/edit.html', context={'form': form})

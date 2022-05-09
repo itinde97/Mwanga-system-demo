@@ -2,13 +2,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from loanApp import views
+from django.views.generic import RedirectView
 from django.contrib.staticfiles.urls import static, staticfiles_urlpatterns
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('account/', include('loginApp.urls')),
-    path('loan/', include('loanApp.urls')),
+    path('loanApp/', include('loanApp.urls')),
     path('manager/', include('managerApp.urls')),
+    path('favicon\.ico', RedirectView.as_view(url='/static/images/favicon.ico')),
 
 ]
 urlpatterns += staticfiles_urlpatterns()

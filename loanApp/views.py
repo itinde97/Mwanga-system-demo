@@ -27,7 +27,7 @@ def LoanRequest(request):
             loan_obj = form.save(commit=False)
             loan_obj.customer = request.user.customer
             loan_obj.save()
-            return redirect('/')
+            return redirect('loanApp:loan_request')
 
     return render(request, 'loanApp/loanrequest.html', context={'form': form})
 
@@ -57,7 +57,7 @@ def LoanPayment(request):
             payment.customer = request.user.customer
             payment.save()
             # pay_save = loanTransaction()
-            return redirect('/')
+            return redirect('loanApp:loan_payment')
 
     return render(request, 'loanApp/payment.html', context={'form': form})
 

@@ -1,9 +1,7 @@
 from pathlib import Path
 import os
-import django_heroku
 import dj_database_url
 from decouple import config
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
@@ -18,9 +16,9 @@ SECRET_KEY = '0k7(=3xy503l5nio^)k29b1ryxyfm)r%k)))4xqq3li4)og%9c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['loanmanagement-nahid.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1']
 
-
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,7 +35,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'django_cleanup.apps.CleanupConfig',
     'bootstrap4',
-    'mathfilters'
+    'mathfilters',
     # 'mathfiltersbootstrap5'
 
 
@@ -122,6 +120,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_DIRS = [STATIC_DIR]
@@ -134,4 +133,3 @@ MEDIA_URL = '/media/'
 
 LOGIN_URL = '/account/login/'
 
-django_heroku.settings(locals())

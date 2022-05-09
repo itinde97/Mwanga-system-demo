@@ -19,3 +19,4 @@ if __name__ == "__main__":
         RemovedInDjango40Warning,
     )
     management.execute_from_command_line()
+"""""Django webApp"""

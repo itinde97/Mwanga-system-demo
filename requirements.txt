@@ -26,3 +26,4 @@ sqlparse==0.4.1
 toml==0.10.2
 whitenoise==5.3.0
 wrapt==1.12.1
+Django==4.0.4
